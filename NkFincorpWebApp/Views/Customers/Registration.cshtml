@@ -5,7 +5,8 @@
     </head>
 
     <body>
-    <form asp-asp-controller="Customers" asp-action="Registration" method="post">
+    <form asp-controller="Customers" asp-action="Registration" method="post">
+
         <div class="form-group">
             <label asp-for="Email">Email</label>
             <input type="email" class="form-control" aria-describedby="emailHelp" asp-for="Email">
@@ -17,7 +18,7 @@
             <label asp-for="FirstName"></label>
             <input type="text" class="form-control" aria-describedby="emailHelp" asp-for="FirstName">
             <small id="emailHelp" class="form-text text-muted"></small>
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -29,8 +30,9 @@
 
         <div class="form-group">
             <label asp-for="PositionId">PositionId</label>
+            <br />
             <select asp-for="PositionId">
-               <br />
+
            <option value="">-Select Position</option>
                 @{
                     foreach (var item in ViewBag.AllPosition)
@@ -80,10 +82,25 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="MaritalStatus">MaritalStatus :</label>
-            <input type="radio" class="form-control" aria-describedby="emailHelp" asp-for="MaritalStatus">
-            <small id="emailHelp" class="form-text text-muted"></small>
+            MaritalStatus :
+            @{
+                foreach (var item in ViewBag.maritalstatus)
+                {
+                    <label asp-for="MaritalStatus">
+                        <input type="radio" name="MaritalStatus" value="@item.Id">@item.Text
+                    </label>
+                }
+            }
+         
             <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="TermsAndCondition">
+                <input type="checkbox" asp-for="TermsAndCondition" />TermsAndCondition
+            </label>
+            
+            <span asp-validation-for="TermsAndCondition" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

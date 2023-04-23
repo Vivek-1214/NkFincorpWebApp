@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NkFincorpWebApp.BAL;
+using NkFincorpWebApp.DAL;
 using NkFincorpWebApp.Models;
 
 namespace NkFincorpWebApp.Controllers
@@ -8,7 +9,10 @@ namespace NkFincorpWebApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            CustomersRepository CustomersRepository = new CustomersRepository();
+           var customers= CustomersRepository.GetAllCustomers();
+
+            return View(customers);
         }
         [HttpGet]
         public IActionResult Registration()
@@ -17,7 +21,8 @@ namespace NkFincorpWebApp.Controllers
 
             CustomersRepository CustomersRepository = new CustomersRepository();
             ViewBag.AllPosition = CustomersRepository.GetAllPositions();
-          
+            ViewBag.maritalstatus = CustomersRepository.GetMaritalStatus();
+
             return View(RegistrationVm);
         }
 
@@ -27,12 +32,44 @@ namespace NkFincorpWebApp.Controllers
                
 
             CustomersRepository CustomersRepository = new CustomersRepository();
-            CustomersRepository.CreateCustomer(RegistrationVm);
+
+            if(RegistrationVm.TermsAndCondition == false)
+            {
+                ModelState.AddModelError("TermsAndCondition", "plase accept terms and conditions");
+            }
+
+            if (RegistrationVm.MaritalStatus == null)
+            {
+                ModelState.AddModelError("MaritalStatus", "plase select MaritalStatus");
+            }
+
+
+
+            if (ModelState.IsValid == true)
+            {
+                CustomersRepository.CreateCustomer(RegistrationVm);
+
+                return RedirectToAction("Index");
+            }
 
             ViewBag.AllPosition = CustomersRepository.GetAllPositions();
             ViewBag.maritalStatus = CustomersRepository.GetMaritalStatus();
 
             return View(RegistrationVm);
+        }
+
+        public IActionResult IsEmailValid(String email)
+        {
+            NkFincorpMvcprojectContext db = new NkFincorpMvcprojectContext();
+            var EmailIsPresent = db.Customers.Any(C => C.Email == email);
+            if (EmailIsPresent == true)
+            {
+                return Json("thise Email is Already used enter another Email..");
+            }
+            else
+            {
+                return Json(true);
+            }
         }
 
 

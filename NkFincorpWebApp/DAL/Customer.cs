@@ -24,4 +24,6 @@ public partial class Customer
     public string? City { get; set; }
 
     public virtual Position? Position { get; set; }
+    public string? MaritalStatus { get;  set; }
+    public bool? TermsAndCondition { get; set; }
 }

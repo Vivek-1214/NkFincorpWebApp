@@ -7,14 +7,18 @@ namespace NkFincorpWebApp.Models
     {
         public int Id { get; set; }
         [Required]
-       
+        [Remote("IsEmailValid","Customers")]
         public string? Email { get; set; }
+
+
         [Required]
         [Display(Name = "First Name")]
         public string? FirstName { get; set; }
+
         [Required]
         [Display(Name = "Last Name")]
         public string? LastName { get; set; }
+
         [Required]
         public int? PositionId { get; set; }
         [Required]
@@ -35,6 +39,6 @@ namespace NkFincorpWebApp.Models
         [Required]
         public string? MaritalStatus { get; set; }
         [Required]
-        public bool? TermsAndCondition { get; set; }
+        public bool TermsAndCondition { get; set; }
     }
 }
