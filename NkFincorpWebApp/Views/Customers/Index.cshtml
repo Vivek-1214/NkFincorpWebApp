@@ -1,40 +1,47 @@
 ﻿@model List<CustomersRegistrationVM>
+
 <html>
     <head>
-        <title></title>
+        <title>Index Page</title>
     </head>
+
     <body>
-        <table class="table tbl-primary">
+    <h1>Index Page</h1>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Email</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>PositionId</th>
-                <th>MobileNumber</th>
-                <th>AadharCard</th>
-                <th>City</th>
-                <th>MaritalStatus</th>
+                <th scope="col">Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Position</th>
+                <th scope="col">MobileNumber</th>
+                <th scope="col">AadharCard</th>
+                <th scope="col">City</th>
+                <th scope="col">MaritalStatus</th>
             </tr>
         </thead>
-          <tbody>
-              <tr>
-                @foreach (var CustomersRegistrationVM in Model)
+        <tbody scope="row">
+             @foreach (var RegistrationVM in Model)
                 {
-                    <td>@CustomersRegistrationVM.Email</td>
-                    <td>@CustomersRegistrationVM.FirstName</td>
-                    <td>@CustomersRegistrationVM.LastName</td>
-                    <td>@CustomersRegistrationVM.PositionId</td>
-                    <td>@CustomersRegistrationVM.MobileNumber</td>
-                    <td>@CustomersRegistrationVM.AadharCard</td>
-                    <td>@CustomersRegistrationVM.City</td>
-                    <td>@CustomersRegistrationVM.MaritalStatus</td>
-                    <td> <a> Delete</a></td>
+            <tr scope ="row">
+               
+                    <td>@RegistrationVM.Id</td>
+                    <td>@RegistrationVM.Email</td>
+                    <td>@RegistrationVM.FirstName</td>
+                    <td>@RegistrationVM.LastName</td>
+                    <td>@RegistrationVM.Position</td>
+                    <td>@RegistrationVM.MobileNumber</td>
+                    <td>@RegistrationVM.AadharCard</td>
+                    <td>@RegistrationVM.City</td>
+                    <td>@RegistrationVM.MaritalStatus</td>
+                    <td> <a asp-controller="Customers" asp-action="Delete" asp-route-Id="@RegistrationVM.Id"> Delete</a></td>
                     <td><a> Update</a></td>
-                  }
+                  
               </tr>
+              }
           </tbody>
         </table>
-
-    </body>
+    <button><a asp-controller="Customers" asp-action="Registration">Register</a></button>
+</body>
 </html>

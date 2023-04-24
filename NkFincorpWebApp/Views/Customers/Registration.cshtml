@@ -87,12 +87,11 @@
                 foreach (var item in ViewBag.maritalstatus)
                 {
                     <label asp-for="MaritalStatus">
-                        <input type="radio" name="MaritalStatus" value="@item.Id">@item.Text
+                        <input type="radio" name="MaritalStatus" value="@item.Text">@item.Text
                     </label>
                 }
+                <span asp-validation-for="MaritalStatus" class="text-danger"></span>
             }
-         
-            <span asp-validation-for="MaritalStatus" class="text-danger"></span>
         </div>
         <br />
         <div class="form-group">

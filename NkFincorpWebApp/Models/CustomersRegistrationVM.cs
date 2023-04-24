@@ -19,10 +19,13 @@ namespace NkFincorpWebApp.Models
         [Display(Name = "Last Name")]
         public string? LastName { get; set; }
 
+        public string? Position { get; set; }
+
         [Required]
         public int? PositionId { get; set; }
         [Required]
         [RegularExpression(@"^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$", ErrorMessage = "Mobile number is not valid")]
+       
         public string? MobileNumber { get; set; }
         [Required]
         [StringLength(20, MinimumLength = 8)]

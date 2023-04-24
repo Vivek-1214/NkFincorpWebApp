@@ -72,6 +72,13 @@ namespace NkFincorpWebApp.Controllers
             }
         }
 
+        public IActionResult Delete(int id)
+        {
+            CustomersRepository CustomersRepository = new CustomersRepository();
+            CustomersRepository.DeleteCustomer(id);
+            return RedirectToAction("Index"); ;
+        }
+
 
     }
 }
