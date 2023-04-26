@@ -1,10 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NkFincorpWebApp.DAL;
 using System.ComponentModel.DataAnnotations;
 
 namespace NkFincorpWebApp.Models
 {
     public class CustomersRegistrationVM
     {
+        public CustomersRegistrationVM()
+        {
+
+        }
+        public CustomersRegistrationVM( Customer Customer)
+        {
+            this.Id = Customer.Id;
+            this.Email = Customer.Email;
+            this.FirstName = Customer.FirstName;
+            this.LastName = Customer.LastName;
+            this.PositionId = Customer.PositionId;
+            this.Position = Customer.Position.Text;
+            this.MobileNumber = Customer.MobileNumber;
+            this.AadharCard = Customer.AadharCard;
+            this.City = Customer.City;
+            this.MaritalStatus = Customer.MaritalStatus;
+        }
+
+
+
         public int Id { get; set; }
         [Required]
         [Remote("IsEmailValid","Customers")]

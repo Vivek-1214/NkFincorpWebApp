@@ -6,6 +6,7 @@ namespace NkFincorpWebApp.DAL;
 
 public partial class NkFincorpMvcprojectContext : DbContext
 {
+
     public NkFincorpMvcprojectContext()
     {
     }

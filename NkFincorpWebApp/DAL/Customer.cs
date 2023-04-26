@@ -1,10 +1,16 @@
-﻿using System;
+﻿using NkFincorpWebApp.Models;
+using System;
 using System.Collections.Generic;
 
 namespace NkFincorpWebApp.DAL;
 
 public partial class Customer
 {
+    public Customer()
+    {
+
+    }
+  
     public int Id { get; set; }
 
     public string? Email { get; set; }

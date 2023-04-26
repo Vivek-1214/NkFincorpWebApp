@@ -2,10 +2,40 @@
 <html>
     <head>
         <title></title>
+      <style>
+          body{
+              height:100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url(https://imgs.search.brave.com/XYcwEDz572HpE2sThVrB3Buo4vJNLziYehTFmfQV6vc/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4y/cjJGcWExdTR5dUxF/eVduSHBOMVRRSGFF/byZwaWQ9QXBp);
+          }
+
+        form {
+            width: 57%;
+            margin-left: 15rem;
+            background-color: lightgray;
+            padding: 2rem;
+        }
+          label{
+            font-weight: 600;
+          }
+         
+
+        button {
+            margin-top: 1rem;
+            margin-left: 15rem;
+        }
+      
+
+        footer {
+            display: none;
+        }
+      </style>
     </head>
 
-    <body>
-    <form asp-controller="Customers" asp-action="Registration" method="post">
+    <body >
+    <h1 style="text-align:center; color: white; margin-top:5rem;">Registration Form</h1>
+    <form  asp-controller="Customers" asp-action="Registration" method="post">
 
         <div class="form-group">
             <label asp-for="Email">Email</label>
@@ -102,7 +132,7 @@
             <span asp-validation-for="TermsAndCondition" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
     </body>
 </html>

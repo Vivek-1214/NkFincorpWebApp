@@ -35,12 +35,12 @@ namespace NkFincorpWebApp.Controllers
 
             if(RegistrationVm.TermsAndCondition == false)
             {
-                ModelState.AddModelError("TermsAndCondition", "plase accept terms and conditions");
+                ModelState.AddModelError("TermsAndCondition", "please accept terms and conditions");
             }
 
             if (RegistrationVm.MaritalStatus == null)
             {
-                ModelState.AddModelError("MaritalStatus", "plase select MaritalStatus");
+                ModelState.AddModelError("MaritalStatus", "please select MaritalStatus");
             }
 
 
@@ -78,7 +78,21 @@ namespace NkFincorpWebApp.Controllers
             CustomersRepository.DeleteCustomer(id);
             return RedirectToAction("Index"); ;
         }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            CustomersRegistrationVM RegistrationVm = new CustomersRegistrationVM();
+           
+            CustomersRepository CustomersRepository = new CustomersRepository();
+          var customer =  CustomersRepository.GetSingleCustomer(id);
+            CustomersRegistrationVM registrationVM = new CustomersRegistrationVM();
 
+
+            ViewBag.AllPosition = CustomersRepository.GetAllPositions();
+            ViewBag.maritalstatus = CustomersRepository.GetMaritalStatus();
+
+            return View(RegistrationVm);
+        }
 
     }
 }

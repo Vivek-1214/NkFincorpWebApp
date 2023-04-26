@@ -3,11 +3,34 @@
 <html>
     <head>
         <title>Index Page</title>
+    <style>
+        body {
+          background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-image: url(https://imgs.search.brave.com/86hWfWiRmnaDXynt-xOQQcUGT1BmO1Nf4iZmAfNwYJk/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC42/T2xNLTM2eEVUNExN/elB5VVpLd21BSGFF/byZwaWQ9QXBp);
+        }
+       a:hover
+        {
+         
+          color:greenyellow;
+          background-color:aliceblue;
+        }
+        button:hover{
+            width:5rem;
+            height:2rem;
+        }
+       
+        footer {
+            display:none;
+        }
+    </style>
     </head>
 
     <body>
-    <h1>Index Page</h1>
-    <table class="table table-striped">
+    <h1 style="text-align:center; background-color: white; margin-top:5rem;">Customers Details</h1>
+    <table class="table table-striped" style="background-color: white;">
+     
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -35,13 +58,18 @@
                     <td>@RegistrationVM.AadharCard</td>
                     <td>@RegistrationVM.City</td>
                     <td>@RegistrationVM.MaritalStatus</td>
-                    <td> <a asp-controller="Customers" asp-action="Delete" asp-route-Id="@RegistrationVM.Id"> Delete</a></td>
-                    <td><a> Update</a></td>
+                    <td> <a style="text-decoration:none;color:red" asp-controller="Customers" asp-action="Delete" asp-route-Id="@RegistrationVM.Id"> Delete</a></td>
+                    <td><a style="text-decoration:none;color:red" asp-controller="Customers" asp-action="Update" asp-route-Id="@RegistrationVM.Id"> Update</a></td>
                   
               </tr>
               }
           </tbody>
         </table>
-    <button><a asp-controller="Customers" asp-action="Registration">Register</a></button>
+    <button style="text-align:center;  margin-left: 30rem;"><a style="text-decoration:none;color:black" asp-controller="Customers" asp-action="Registration">Register</a></button>
 </body>
+<br />
+<footer>
+
+
+</footer>
 </html>

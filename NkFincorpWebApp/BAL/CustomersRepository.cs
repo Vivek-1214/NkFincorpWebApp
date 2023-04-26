@@ -1,6 +1,8 @@
 ﻿using NkFincorpWebApp.DAL;
 using NkFincorpWebApp.Models;
 using Microsoft.EntityFrameworkCore;
+using NkFincorpWebApp.Utility;
+
 namespace NkFincorpWebApp.BAL
 {
     public class CustomersRepository
@@ -17,18 +19,10 @@ namespace NkFincorpWebApp.BAL
         public void CreateCustomer(CustomersRegistrationVM RegistrationVm)
         {
             NkFincorpMvcprojectContext db = new NkFincorpMvcprojectContext();
+
             Customer customer = new Customer();
-            customer.Id = RegistrationVm.Id;
-            customer.Email = RegistrationVm.Email;
-            customer.FirstName = RegistrationVm.FirstName;
-            customer.LastName = RegistrationVm.LastName;
-            customer.PositionId = RegistrationVm.PositionId;
-            customer.Password = RegistrationVm.Password;
-            customer.MobileNumber = RegistrationVm.MobileNumber;
-            customer.AadharCard = RegistrationVm.AadharCard;
-            customer.City = RegistrationVm.City;
-            customer.MaritalStatus = RegistrationVm.MaritalStatus;
-            customer.TermsAndCondition = RegistrationVm.TermsAndCondition;
+            customer.InsertDetails(RegistrationVm);
+
 
              db.Customers.Add(customer);
             db.SaveChanges();
@@ -58,23 +52,13 @@ namespace NkFincorpWebApp.BAL
         {
             NkFincorpMvcprojectContext db = new NkFincorpMvcprojectContext();
 
-            var customers = db.Customers
-                                       .Include(C => C.Position).ToList();
+           List<Customer> customers = db.Customers.Include(C => C.Position).ToList();
 
             List<CustomersRegistrationVM> CustomersRegistrationVM = new List<CustomersRegistrationVM>();
             foreach (var Customer in customers)
             {
-                CustomersRegistrationVM registrationVM = new CustomersRegistrationVM();
-                registrationVM.Id = Customer.Id;
-                registrationVM.Email = Customer.Email;
-                registrationVM.FirstName = Customer.FirstName;
-                registrationVM.LastName = Customer.LastName;
-                registrationVM.PositionId = Customer.PositionId;
-                registrationVM.Position = Customer.Position.Text; 
-                registrationVM.MobileNumber = Customer.MobileNumber;
-                registrationVM.AadharCard = Customer.AadharCard;
-                registrationVM.City = Customer.City;
-                registrationVM.MaritalStatus = Customer.MaritalStatus;
+                CustomersRegistrationVM registrationVM = new CustomersRegistrationVM(Customer);
+              
 
                 CustomersRegistrationVM.Add(registrationVM);
             }
