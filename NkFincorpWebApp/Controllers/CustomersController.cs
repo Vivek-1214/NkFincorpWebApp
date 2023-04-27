@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+
 using NkFincorpWebApp.BAL;
 using NkFincorpWebApp.DAL;
 using NkFincorpWebApp.Models;
@@ -7,6 +9,11 @@ namespace NkFincorpWebApp.Controllers
 {
     public class CustomersController : Controller
     {
+      private readonly ICustomersRepository customerRepository;
+        public CustomersController(ICustomersRepository _customerRepository)
+        {
+            this.customerRepository= _customerRepository;
+        }
         public IActionResult Index()
         {
             CustomersRepository CustomersRepository = new CustomersRepository();

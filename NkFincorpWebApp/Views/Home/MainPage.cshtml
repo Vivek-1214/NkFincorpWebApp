@@ -3,10 +3,482 @@
 <html>
 	<head>
 		<title>NK Fincorp</title>
-    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    @*<link rel="stylesheet" type="text/css" href="~/css/style.css">*@
         <link rel="icon" type="image/x-icon" href="E:\nk fincorp\images\fevicon.ico">
 
         <style>
+            * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+
+.navcontainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F4F4F4;
+    text-align: center;
+    font-size: larger;
+    text-transform: capitalize;
+    padding: 1rem 1rem;
+}
+
+.img {
+    width: 8%;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .dropdown-content a {
+        color: #800606;
+        line-height: 1.5rem;
+        text-decoration: none;
+        background-color: #c6c1d9;
+    }
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.dropdown-content a:hover {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: yellowgreen;
+}
+
+.leftsection {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 0rem;
+}
+
+    .leftsection p {
+        line-height: 2rem;
+        font-size: large;
+    }
+
+.services {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ourservices {
+    display: flex;
+    flex-direction: column;
+}
+
+    .ourservices a {
+        color: white;
+        text-decoration: none;
+        line-height: 2.5rem;
+        font-size: larger;
+    }
+
+        .ourservices a:hover {
+            color: black;
+            cursor: pointer;
+            font-size: 1rem
+        }
+
+
+
+.rightsection {
+    padding: 2rem 0rem;
+}
+
+    .rightsection form {
+        text-align: center;
+        background-color: #EDEFF2;
+        border: 0.4rem solid white;
+        border-radius: 1rem;
+        color: black;
+        width: 18rem;
+        padding: 6% 0%;
+    }
+
+form h1 {
+    font-weight: 800;
+    font-size: larger;
+    padding: 1rem;
+}
+
+#fullname, #emailid, #mobile, #city {
+    font-weight: 800;
+    font-size: small;
+    width: 79%;
+    height: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 4%;
+}
+
+form .btn {
+    background-color: #8bc34a;
+    width: 82%;
+    height: 3rem;
+    cursor: pointer;
+    margin: auto;
+    padding-top: 1rem;
+    transition: all 0.3 ease;
+}
+
+.achievement-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem;
+    animation-name: slide-bars;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    background-color: white;
+    overflow: hidden;
+}
+
+    .achievement-container .a1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center
+    }
+
+    .achievement-container .img01 {
+        width: 14%;
+    }
+
+    .achievement-container p {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 200;
+        font-style: italic;
+        padding: 0.8rem;
+    }
+
+.service-main-header, .founder-info-container .info-head {
+    background-color: #cecae1;
+    color: black;
+    text-align: center;
+    padding: 1rem 0rem;
+}
+
+    .service-main-header h1, .info-head h1, .nkfincorp-head h1 {
+        animation-name: slide-bars;
+        animation-duration: 5s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        overflow: hidden;
+    }
+
+.service-header-container {
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: medium;
+}
+
+.service-details-outside-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #f4f4f4;
+    margin: 1.5rem;
+}
+
+    .service-details-outside-container .card {
+        background-color: #fff;
+        width: 28%;
+        margin: 2rem 0rem;
+        padding: 1rem;
+        overflow: auto;
+        background-color: lightyellow;
+    }
+
+.card .head {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card .icon01 {
+    width: 7rem;
+    margin: 0.5rem;
+    overflow: hidden;
+}
+
+.card .head h2 {
+    color: black;
+    padding: 2rem;
+}
+
+.card p {
+    line-height: 1.5rem;
+    font-size: medium;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5.5rem;
+    color: black;
+}
+
+    .foot .btn {
+        width: 7rem;
+        height: 2.5rem;
+        border: 2px solid #a9eaba;
+        border-radius: 7px;
+        background-color: #9297dd;
+        color: white;
+        font-size: medium;
+        cursor: pointer;
+        transition: all 0.5s ease 0s;
+    }
+
+.founder-info-container {
+    background-color: white;
+    color: black;
+}
+
+    .founder-info-container .info-main {
+        display: flex;
+        padding: 2rem 0rem;
+    }
+
+.id {
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+}
+
+    .id .founder-img {
+        width: 18rem;
+        margin: 1rem 2rem;
+    }
+
+    .id .p1, b {
+        margin: 0rem 5rem;
+        font-size: larger;
+        color: black;
+    }
+
+.discription {
+    width: 60%;
+    text-overflow: clip;
+    line-height: 2;
+    padding: 2rem 1rem;
+    overflow:hidden;
+}
+
+    .discription .p2 {
+        overflow: clip;
+        font-family: 'Caveat', cursive;
+    }
+
+.why-nk-fincorp {
+    background-color: #F4F4F4;
+    border-color: #F4F4F4;
+    color: #1A1A1A;
+}
+
+.nkfincorp-head {
+    background-color: #cecae1;
+    color: black;
+    text-align: center;
+    padding: 1rem 0rem;
+}
+
+.nkfincorp-main {
+    display: flex;
+    flex-direction: column;
+}
+
+    .nkfincorp-main .slide {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 3rem;
+    }
+
+    .nkfincorp-main .card {
+        text-align: center;
+    }
+
+        .nkfincorp-main .card img {
+            width: 5rem;
+        }
+
+.card p {
+    line-height: 2.5rem;
+    font-size: medium;
+}
+
+.range-of-clients {
+    background-color: white;
+}
+
+.range-of-clients-head {
+    text-align: center;
+    background-color: #cecae1;
+    font-size: 1.5rem;
+    letter-spacing: 0.025em;
+    font-weight: 800;
+    padding: 12px 0px;
+}
+
+    .range-of-clients-head h2 {
+        animation-name: slide-bars;
+        animation-duration: 5s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+    }
+
+.range-of-clients-main {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.vertical-slide {
+    box-sizing: border-box;
+    color: black;
+}
+
+    .vertical-slide img {
+        width: 20rem;
+    }
+
+.footer-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #BBBAF0;
+    color: white;
+    line-height: 3rem;
+    padding: 3rem 2rem 3rem 0rem;
+}
+
+.f {
+    width: 30%;
+    overflow: hidden;
+    text-overflow: clip;
+    padding: 1rem 6rem 0rem 1rem;
+}
+
+    .f .img {
+        width: 13rem;
+        margin: 1.5rem;
+    }
+
+    .f p {
+        font-size: 1rem;
+        color: white;
+        line-height: 1.5rem;
+    }
+
+.f1 {
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+    text-overflow: clip;
+}
+
+    .f1 h3 {
+        color: black;
+    }
+
+    .f1 a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .f1 a:hover {
+            color: darkcyan;
+            font-size: 1.5rem;
+        }
+
+#footer-navigation-container-mobile {
+    background-color: #333333;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+#footer-lower-menu {
+    display: flex;
+    flex-direction: row;
+    padding: 0rem 2rem;
+    background-color: #333333;
+    color: white;
+}
+
+    #footer-lower-menu a {
+        padding: 0rem 0.5rem;
+        text-decoration: none;
+        color: white;
+        overflow: hidden;
+    }
+
+        #footer-lower-menu a:hover {
+            color: darkcyan;
+        }
+
+#desktop-footer-bottom {
+    background-color: #333333;
+    color: white;
+    padding: 2rem 0rem 0rem 2rem;
+}
+
+
+/*ANIMATION*/
+
+.btn:hover {
+    transform: translateY(10px);
+    background-color: #f44336;
+    color: black;
+}
+
+.btn:hover {
+    transform: translateY(10px);
+    background-color: #f44336;
+    color: black;
+}
+
+
+keyframes slide-bars {
+    from {
+        transform: translateX(-1100px);
+    }
+
+    to {
+        transform: translateX(5px);
+    }
+}
+
+
+/*RESONSIVENESS*/
+/*media screen and (max-width: 1000px) {
+    .navcontainer {
+        display: block;
+    }
+
+        .navcontainer .img {
+            width: 15%;
+        }
+}*/
+}
         footer {
             display: none;
         }
@@ -20,7 +492,7 @@
 	<body>
 
     <div class="navcontainer">
-			<img class="img" src="images\nk logo.png" alt="logo">
+        <img class="img" src="F:\nk fincorp\images\nk logo.png" alt="logo">
           
 			<div class="dropdown">Start Bussiness
                    <div class="dropdown-content">
@@ -121,7 +593,7 @@
            <div class="service-details-outside-container">
             	<div class="card">
             	<div class="head">
-            			<img class="icon01" src="images\pvt ltd.png">
+                <img class="icon01" src="F:\nk fincorp\images\pvt ltd.png">
             			<h2>Pvt. Ltd. Registration</h2></div>
                         <p>Private limited company is popular and well known business structure it enjoys wide options to raise funds through bank loans, angel investors, venture capitalists, in comparison to LLPs and OPCs.</p>
             	<div class="foot" >

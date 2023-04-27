@@ -5,9 +5,10 @@ using NkFincorpWebApp.Utility;
 
 namespace NkFincorpWebApp.BAL
 {
-    public class CustomersRepository
+    public class CustomersRepository: ICustomersRepository
     {
-
+        private readonly NkFincorpMvcprojectContext database;
+     
         public List<Position> GetAllPositions()
         {
             NkFincorpMvcprojectContext db = new NkFincorpMvcprojectContext();
