@@ -10,7 +10,12 @@ namespace NkFincorpWebApp.BAL
        public List<MaritalStatus> GetMaritalStatus();
        public List<CustomersRegistrationVM> GetAllCustomers();
          public void DeleteCustomer(int id);
-        public Customer GetSingleCustomer(int id);
-  
+        public Customer GetCustomer(int id);
+
+        CustomersUpdateVM GetSingleCustomer(int id);
+
+        void UpdateCustomer(CustomersUpdateVM updateVM);
+
+
     }
 }

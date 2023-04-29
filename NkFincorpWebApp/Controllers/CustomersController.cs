@@ -9,14 +9,14 @@ namespace NkFincorpWebApp.Controllers
 {
     public class CustomersController : Controller
     {
-      private readonly ICustomersRepository customerRepository;
+      private readonly ICustomersRepository CustomersRepository;
         public CustomersController(ICustomersRepository _customerRepository)
         {
-            this.customerRepository= _customerRepository;
+            this.CustomersRepository = _customerRepository;
         }
         public IActionResult Index()
         {
-            CustomersRepository CustomersRepository = new CustomersRepository();
+           
            var customers= CustomersRepository.GetAllCustomers();
 
             return View(customers);
@@ -26,7 +26,7 @@ namespace NkFincorpWebApp.Controllers
         {
             CustomersRegistrationVM RegistrationVm = new CustomersRegistrationVM();
 
-            CustomersRepository CustomersRepository = new CustomersRepository();
+
             ViewBag.AllPosition = CustomersRepository.GetAllPositions();
             ViewBag.maritalstatus = CustomersRepository.GetMaritalStatus();
 
@@ -38,7 +38,7 @@ namespace NkFincorpWebApp.Controllers
         {
                
 
-            CustomersRepository CustomersRepository = new CustomersRepository();
+           
 
             if(RegistrationVm.TermsAndCondition == false)
             {
@@ -81,24 +81,33 @@ namespace NkFincorpWebApp.Controllers
 
         public IActionResult Delete(int id)
         {
-            CustomersRepository CustomersRepository = new CustomersRepository();
+           
             CustomersRepository.DeleteCustomer(id);
             return RedirectToAction("Index"); ;
         }
         [HttpGet]
         public IActionResult Update(int id)
         {
-            CustomersRegistrationVM RegistrationVm = new CustomersRegistrationVM();
-           
-            CustomersRepository CustomersRepository = new CustomersRepository();
-          var customer =  CustomersRepository.GetSingleCustomer(id);
-            CustomersRegistrationVM registrationVM = new CustomersRegistrationVM();
+            var customerVm =  CustomersRepository.GetSingleCustomer(id);
 
+               ViewBag.AllPosition = CustomersRepository.GetAllPositions();
+            ViewBag.maritalstatus = CustomersRepository.GetMaritalStatus();
+
+            return View(customerVm);
+        }
+        [HttpPost]
+        public IActionResult Update(CustomersUpdateVM updateVM)
+        {
+            if (ModelState.IsValid == true) {
+
+               CustomersRepository.UpdateCustomer(updateVM);
+            }
+           
 
             ViewBag.AllPosition = CustomersRepository.GetAllPositions();
             ViewBag.maritalstatus = CustomersRepository.GetMaritalStatus();
 
-            return View(RegistrationVm);
+            return View(updateVM);
         }
 
     }
